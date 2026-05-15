@@ -1,0 +1,2 @@
+import type { PropsWithChildren } from 'react';
+export function Badge({ children, tone='slate' }: PropsWithChildren<{ tone?: 'slate'|'blue'|'green'|'amber'|'red'|'purple' }>) { const tones = { slate:'bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-200', blue:'bg-blue-100 text-blue-700', green:'bg-green-100 text-green-700', amber:'bg-amber-100 text-amber-800', red:'bg-red-100 text-red-700', purple:'bg-purple-100 text-purple-700' }; return <span className={`inline-flex rounded-full px-2 py-1 text-xs font-medium ${tones[tone]}`}>{children}</span>; }
