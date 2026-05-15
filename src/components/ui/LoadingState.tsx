@@ -1,0 +1,1 @@
+export function LoadingState({ label='Loading...' }: { label?:string }) { return <div className="animate-pulse rounded-xl border border-slate-200 bg-slate-50 p-6 text-slate-500 dark:border-slate-800 dark:bg-slate-900">{label}</div>; }
