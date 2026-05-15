@@ -72,6 +72,12 @@ npm run tauri:dev
 
 The repository does not commit binary `.ico` files. The `pretauri:dev` and `pretauri:build` npm lifecycle scripts generate `src-tauri/icons/icon.ico` locally before Tauri starts so Windows resource generation has the icon it expects.
 
+## Language and theme
+
+Open Settings to switch the UI language between English, Russian, and Slovak. Settings also controls the light/dark/system theme; `src/theme/Theme.tsx` applies the `dark` class and document language automatically.
+
+Task dates are optional. Leaving Deadline or Planned date empty sends `null` to the API instead of blocking task creation.
+
 ## Build Windows app
 
 ```bash

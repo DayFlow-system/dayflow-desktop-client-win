@@ -6,9 +6,9 @@
 - Tailwind CSS styling with reusable UI primitives.
 - API layer for health, Today, tasks, events, schedule, and day state.
 - TanStack Query hooks for server state and mutations.
-- Zustand stores for server URL, theme, and sidebar preferences.
-- Routes and pages: Today, Tasks, Events, Schedule, Day State, Settings.
-- Zod schemas for response and form validation.
+- Zustand stores for server URL, theme, language, and sidebar preferences.
+- Routes and pages: Today, Tasks, Events, Schedule, Day State, Settings, with English/Russian/Slovak UI labels.
+- Zod schemas for response and form validation, including optional task date fields.
 - Unit, API, component, and page tests with reusable MSW endpoint handlers.
 - Developer documentation under `docs/`.
 
