@@ -1,0 +1,7 @@
+import type { Task, TaskStatus } from '../../types/task';
+import { formatDate } from '../../utils/date';
+import { priorityLabel, titleize } from '../../utils/formatting';
+import { Badge } from '../ui/Badge';
+import { Button } from '../ui/Button';
+import { Card } from '../ui/Card';
+export function TaskCard({ task, onStatus, onEdit, onArchive }: { task:Task; onStatus?:(status:TaskStatus)=>void; onEdit?:()=>void; onArchive?:()=>void }) { return <Card><div className="flex items-start justify-between gap-4"><div><h3 className="font-semibold">{task.title}</h3>{task.description && <p className="mt-1 text-sm text-slate-500">{task.description}</p>}<div className="mt-3 flex flex-wrap gap-2"><Badge tone="purple">{priorityLabel(task.priority)}</Badge><Badge>{titleize(task.status)}</Badge><Badge tone="blue">{titleize(task.type)}</Badge><Badge tone="green">Energy {task.energyRequired}</Badge><Badge>{titleize(task.healthRule)}</Badge>{task.deadline && <Badge tone="red">Deadline {formatDate(task.deadline)}</Badge>}{task.plannedDate && <Badge tone="amber">Planned {formatDate(task.plannedDate)}</Badge>}</div></div><div className="flex flex-wrap justify-end gap-2"><Button variant="secondary" onClick={() => onStatus?.('in_progress')}>Start</Button><Button variant="secondary" onClick={() => onStatus?.('done')}>Done</Button><Button variant="secondary" onClick={() => onStatus?.('skipped')}>Skip</Button>{onEdit && <Button variant="ghost" onClick={onEdit}>Edit</Button>}{onArchive && <Button variant="danger" onClick={onArchive}>Archive</Button>}</div></div></Card>; }
