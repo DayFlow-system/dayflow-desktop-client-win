@@ -3,6 +3,14 @@
 ## `npm install`
 Installs dependencies. Use after cloning or changing `package.json`. If it fails with registry/proxy errors, correct npm network access and retry.
 
+If npm fails with `ERESOLVE` and mentions packages such as `@types/react@19` or `@vitejs/plugin-react@6`, the local `node_modules` or lockfile was likely created from an older floating dependency set. Clean the stale install and retry without `--force` or `--legacy-peer-deps`:
+
+```powershell
+Remove-Item -Recurse -Force node_modules -ErrorAction SilentlyContinue
+Remove-Item -Force package-lock.json -ErrorAction SilentlyContinue
+npm install
+```
+
 ## `npm run dev`
 Starts Vite for browser-only React development. Use this when you want to inspect the UI in a regular browser and do not need the native Tauri window. If port 1420 is busy, stop the process using it.
 

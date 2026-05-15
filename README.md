@@ -16,6 +16,16 @@ npm install
 
 If your environment blocks npm registry access, fix the registry/proxy policy first and rerun the command.
 
+If npm reports an `ERESOLVE` conflict after an earlier install attempt with floating dependencies, remove stale install artifacts and install again:
+
+```powershell
+Remove-Item -Recurse -Force node_modules -ErrorAction SilentlyContinue
+Remove-Item -Force package-lock.json -ErrorAction SilentlyContinue
+npm install
+```
+
+The project now uses exact package versions and npm `overrides` for the React/Vite peer dependency set to avoid resolving `@types/react` 19 or `@vitejs/plugin-react` 6 into this React 18 + Vite 5 app.
+
 ## Development
 
 You do **not** need to run both development commands at the same time.
