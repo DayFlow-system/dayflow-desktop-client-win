@@ -2,7 +2,7 @@
 
 ## Implemented
 
-- Tauri + Vite + React + TypeScript desktop scaffold for Windows.
+- Tauri + Vite + React + TypeScript desktop scaffold for Windows, with pinned npm/Tauri versions and Rust 1.88.0 toolchain metadata.
 - Tailwind CSS styling with reusable UI primitives.
 - API layer for health, Today, tasks, events, schedule, and day state.
 - TanStack Query hooks for server state and mutations.

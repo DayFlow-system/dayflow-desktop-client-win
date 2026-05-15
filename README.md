@@ -5,7 +5,7 @@ DayFlow Desktop is a Tauri + React + TypeScript client for the DayFlow Server. I
 ## Requirements
 
 - Node.js 20+
-- Rust toolchain for Tauri builds
+- Rust toolchain for Tauri builds; this repository pins Rust/Cargo 1.88.0 via `rust-toolchain.toml`
 - A running DayFlow Server, defaulting to `http://localhost:3000`
 
 ## Install
@@ -35,6 +35,16 @@ npm run dev
 ```
 
 Open Settings to change the server URL for a local server, LAN server, or future Cloudflare Tunnel URL.
+
+## Tauri Rust toolchain
+
+If `npm run tauri:dev` fails with `feature edition2024 is required`, your active Cargo is too old for the resolved Tauri dependency graph. Install the pinned toolchain and retry:
+
+```powershell
+rustup toolchain install 1.88.0
+rustup default 1.88.0
+npm run tauri:dev
+```
 
 ## Build Windows app
 

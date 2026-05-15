@@ -31,3 +31,19 @@ Formats files with Prettier.
 
 ## `npm run typecheck`
 Runs TypeScript without emitting files.
+
+## Rust/Cargo version for Tauri
+The repository includes `rust-toolchain.toml` and expects Rust/Cargo 1.88.0 for Tauri development. This avoids the Cargo 1.84 `edition2024` dependency parsing error that can happen when crates such as `time` are resolved by Tauri dependencies.
+
+If `npm run tauri:dev` fails with `feature edition2024 is required`, run:
+
+```powershell
+rustup toolchain install 1.88.0
+rustup default 1.88.0
+```
+
+Then retry:
+
+```powershell
+npm run tauri:dev
+```
