@@ -1,0 +1,10 @@
+import type { DayState } from '../../src/types/dayState';
+import type { DayFlowEvent } from '../../src/types/event';
+import type { ScheduleBlock } from '../../src/types/schedule';
+import type { Task } from '../../src/types/task';
+import type { TodayDashboard } from '../../src/types/today';
+export const task: Task = { id:'t1', title:'Read docs', description:'Client guide', status:'planned', type:'study', priority:4, deadline:'2026-05-20', plannedDate:'2026-05-15', lastDoneAt:null, energyRequired:'medium', healthRule:'always', createdAt:'now', updatedAt:'now' };
+export const event: DayFlowEvent = { id:'e1', title:'Doctor', description:null, date:'2026-05-15', startTime:'15:00', endTime:'16:00', status:'planned', importance:'mandatory', location:'Clinic', createdAt:'now', updatedAt:'now' };
+export const block: ScheduleBlock = { id:'s1', title:'Morning study', description:null, dayOfWeek:5, startTime:'09:00', endTime:'10:00', type:'study', status:'active', importance:'high', location:null, createdAt:'now', updatedAt:'now' };
+export const dayState: DayState = { id:'d1', date:'2026-05-15', health:'healthy', energy:'medium', mood:4, notes:'Good day', createdAt:'now', updatedAt:'now' };
+export const today: TodayDashboard = { date:'2026-05-15', dayState, mandatoryEvents:[event], plannedEvents:[], scheduleBlocks:[block], deadlineTasks:[task], plannedTasks:[], suggestedTasks:[] };
