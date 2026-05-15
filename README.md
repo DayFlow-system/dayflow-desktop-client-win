@@ -58,7 +58,7 @@ npm run tauri:dev
 
 ## Tauri dependency alignment
 
-The Rust Tauri crates are pinned to the same exact patch version (`tauri = 2.9.1` and `tauri-build = 2.9.1`). This prevents Cargo from compiling an old `tauri-build` against newer `tauri-utils`, which causes errors such as `save_global_api_scripts_paths` taking the wrong number of arguments.
+The Rust Tauri crates use the same stable crate line (`tauri = 2.6.1` and `tauri-build = 2.6.1`) without an `=` prefix. Tauri CLI parses these versions before Cargo runs, so exact Cargo requirements such as `=2.9.1` can fail before compilation. Keeping both crates on the same available line prevents Cargo from compiling an old `tauri-build` against newer `tauri-utils`, which causes errors such as `save_global_api_scripts_paths` taking the wrong number of arguments.
 
 If you previously hit that compile error, clear the failed Cargo resolution and retry:
 

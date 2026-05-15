@@ -61,7 +61,7 @@ npm run tauri:dev
 
 
 ## Tauri Rust crate version mismatch
-The Rust Tauri crates must use the same patch line. This project pins `tauri` and `tauri-build` to `2.9.1` so Cargo does not compile `tauri-build 2.0.0` against `tauri-utils 2.9.x`.
+The Rust Tauri crates must use the same patch line. This project uses `tauri` and `tauri-build` on the same `2.6.1` Rust crate line so Cargo does not compile `tauri-build 2.0.0` against `tauri-utils 2.9.x`.
 
 If Cargo reports compile errors inside `tauri-build` mentioning `tauri_utils::plugin::save_global_api_scripts_paths`, remove the stale lockfile/build output and retry:
 
