@@ -19,11 +19,15 @@ You do not need to run this command manually before `npm run tauri:dev`; Tauri r
 ## `npm run tauri:dev`
 Starts the Windows desktop shell. This is the normal command for desktop development. It also starts Vite automatically, so run this command by itself in most cases. Requires Rust and Tauri prerequisites.
 
+Before this command runs, npm automatically executes `pretauri:dev`, which generates the local `src-tauri/icons/icon.ico` file required by Windows resource generation. The binary icon is intentionally ignored by Git.
+
 ## `npm run build`
 Runs TypeScript build checks and produces the web bundle in `dist`.
 
 ## `npm run tauri:build`
 Builds the native desktop package. Requires Rust toolchain and Windows build prerequisites.
+
+Before this command runs, npm automatically executes `pretauri:build`, which generates the same local Tauri icon file.
 
 ## `npm run test`
 Runs Vitest once with React Testing Library tests.
@@ -61,7 +65,7 @@ npm run tauri:dev
 
 
 ## Tauri Rust crate version mismatch
-The Rust Tauri crates must use the same patch line. This project uses `tauri` and `tauri-build` on the same `2.6.1` Rust crate line so Cargo does not compile `tauri-build 2.0.0` against `tauri-utils 2.9.x`.
+The Tauri npm packages and Rust crates must use the same major/minor line. This project uses `@tauri-apps/api`, `@tauri-apps/cli`, `tauri`, and `tauri-build` on the same `2.6.1` line so Cargo does not compile `tauri-build 2.0.0` against `tauri-utils 2.9.x`.
 
 If Cargo reports compile errors inside `tauri-build` mentioning `tauri_utils::plugin::save_global_api_scripts_paths`, remove the stale lockfile/build output and retry:
 

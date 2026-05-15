@@ -58,7 +58,7 @@ npm run tauri:dev
 
 ## Tauri dependency alignment
 
-The Rust Tauri crates use the same stable crate line (`tauri = 2.6.1` and `tauri-build = 2.6.1`) without an `=` prefix. Tauri CLI parses these versions before Cargo runs, so exact Cargo requirements such as `=2.9.1` can fail before compilation. Keeping both crates on the same available line prevents Cargo from compiling an old `tauri-build` against newer `tauri-utils`, which causes errors such as `save_global_api_scripts_paths` taking the wrong number of arguments.
+The Tauri npm packages and Rust crates use the same stable `2.6.1` line (`@tauri-apps/api`, `@tauri-apps/cli`, `tauri`, and `tauri-build`) without an `=` prefix. Tauri CLI parses these versions before Cargo runs, so exact Cargo requirements such as `=2.9.1` can fail before compilation. Keeping both crates on the same available line prevents Cargo from compiling an old `tauri-build` against newer `tauri-utils`, which causes errors such as `save_global_api_scripts_paths` taking the wrong number of arguments.
 
 If you previously hit that compile error, clear the failed Cargo resolution and retry:
 
@@ -67,6 +67,10 @@ Remove-Item -Force src-tauri\Cargo.lock -ErrorAction SilentlyContinue
 cargo clean --manifest-path src-tauri\Cargo.toml
 npm run tauri:dev
 ```
+
+## Tauri icon generation
+
+The repository does not commit binary `.ico` files. The `pretauri:dev` and `pretauri:build` npm lifecycle scripts generate `src-tauri/icons/icon.ico` locally before Tauri starts so Windows resource generation has the icon it expects.
 
 ## Build Windows app
 
