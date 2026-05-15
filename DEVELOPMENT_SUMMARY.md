@@ -23,8 +23,8 @@
 
 ## Available commands
 
-- `npm run dev`
-- `npm run tauri:dev`
+- `npm run tauri:dev` — normal desktop development; starts Vite automatically.
+- `npm run dev` — browser-only React/Vite development.
 - `npm run build`
 - `npm run tauri:build`
 - `npm run test`

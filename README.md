@@ -18,9 +18,20 @@ If your environment blocks npm registry access, fix the registry/proxy policy fi
 
 ## Development
 
+You do **not** need to run both development commands at the same time.
+
+For the normal desktop workflow, run only:
+
+```bash
+npm run tauri:dev
+```
+
+Tauri starts Vite automatically through `beforeDevCommand`, so a separate `npm run dev` terminal is not required.
+
+Use the web-only Vite workflow only when you want to debug the React UI in a browser without opening the desktop shell:
+
 ```bash
 npm run dev
-npm run tauri:dev
 ```
 
 Open Settings to change the server URL for a local server, LAN server, or future Cloudflare Tunnel URL.
