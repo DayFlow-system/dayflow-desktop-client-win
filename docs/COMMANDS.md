@@ -55,3 +55,15 @@ Then retry:
 ```powershell
 npm run tauri:dev
 ```
+
+
+## Tauri Rust crate version mismatch
+The Rust Tauri crates must use the same patch line. This project pins `tauri` and `tauri-build` to `2.9.1` so Cargo does not compile `tauri-build 2.0.0` against `tauri-utils 2.9.x`.
+
+If Cargo reports compile errors inside `tauri-build` mentioning `tauri_utils::plugin::save_global_api_scripts_paths`, remove the stale lockfile/build output and retry:
+
+```powershell
+Remove-Item -Force src-tauri\Cargo.lock -ErrorAction SilentlyContinue
+cargo clean --manifest-path src-tauri\Cargo.toml
+npm run tauri:dev
+```
