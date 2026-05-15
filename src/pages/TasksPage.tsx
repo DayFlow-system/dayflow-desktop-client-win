@@ -1,0 +1,13 @@
+import { useMemo, useState } from 'react';
+import { TaskCard } from '../components/domain/TaskCard';
+import { TaskForm } from '../components/forms/TaskForm';
+import { Button } from '../components/ui/Button';
+import { EmptyState } from '../components/ui/EmptyState';
+import { ErrorState } from '../components/ui/ErrorState';
+import { Input } from '../components/ui/Input';
+import { LoadingState } from '../components/ui/LoadingState';
+import { Modal } from '../components/ui/Modal';
+import { Select } from '../components/ui/Select';
+import { useTaskMutations, useTasks } from '../hooks/useTasks';
+import { taskStatuses, taskTypes, type Task } from '../types/task';
+export function TasksPage() { const q=useTasks(); const m=useTaskMutations(); const [search,setSearch]=useState(''); const [status,setStatus]=useState('all'); const [type,setType]=useState('all'); const [edit,setEdit]=useState<Task|null>(null); const [create,setCreate]=useState(false); const tasks=useMemo(()=> (q.data ?? []).filter(t => (status==='all'||t.status===status) && (type==='all'||t.type===type) && t.title.toLowerCase().includes(search.toLowerCase())),[q.data,search,status,type]); if(q.isLoading) return <LoadingState />; if(q.isError) return <ErrorState error={q.error} onRetry={() => void q.refetch()} />; return <div className="space-y-4"><div className="flex items-center justify-between"><h1 className="text-2xl font-bold">Tasks</h1><Button onClick={()=>setCreate(true)}>Create Task</Button></div><div className="grid gap-3 md:grid-cols-3"><Input placeholder="Search title" value={search} onChange={e=>setSearch(e.target.value)} /><Select value={status} onChange={e=>setStatus(e.target.value)}><option value="all">All statuses</option>{taskStatuses.map(x=><option key={x}>{x}</option>)}</Select><Select value={type} onChange={e=>setType(e.target.value)}><option value="all">All types</option>{taskTypes.map(x=><option key={x}>{x}</option>)}</Select></div>{tasks.length===0 ? <EmptyState title="No tasks" /> : <div className="grid gap-3">{tasks.map(t=><TaskCard key={t.id} task={t} onEdit={()=>setEdit(t)} onArchive={()=>{ if (window.confirm('Archive this task?')) m.archive.mutate(t.id); }} onStatus={(s)=>m.update.mutate({id:t.id,input:{status:s}})} />)}</div>}<Modal open={create} title="Create task" onClose={()=>setCreate(false)}><TaskForm onSubmit={(input)=>m.create.mutate(input,{onSuccess:()=>setCreate(false)})} submitLabel="Create" /></Modal><Modal open={!!edit} title="Edit task" onClose={()=>setEdit(null)}>{edit && <TaskForm initial={edit} onSubmit={(input)=>m.update.mutate({id:edit.id,input},{onSuccess:()=>setEdit(null)})} />}</Modal></div>; }
