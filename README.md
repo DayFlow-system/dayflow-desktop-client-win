@@ -24,7 +24,7 @@ Remove-Item -Force package-lock.json -ErrorAction SilentlyContinue
 npm install
 ```
 
-The project now uses exact package versions and npm `overrides` for the React/Vite peer dependency set to avoid resolving `@types/react` 19 or incompatible Vite plugin versions. Vite is pinned to the patched 6.4.2 line to avoid the known vulnerable 5.x dev-server advisories that npm audit reports.
+The project now uses exact package versions and npm `overrides` for the React/Vite/Router/ESLint peer dependency set to avoid resolving `@types/react` 19, vulnerable React Router 6.30.2-or-older packages, vulnerable `@eslint/plugin-kit` versions, or incompatible Vite plugin versions. Vite is pinned to the patched 6.4.2 line to avoid the known vulnerable 5.x dev-server advisories that npm audit reports.
 
 ## Development
 

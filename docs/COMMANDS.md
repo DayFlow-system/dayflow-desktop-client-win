@@ -41,7 +41,7 @@ Formats files with Prettier.
 Runs TypeScript without emitting files.
 
 ## `npm run audit`
-Runs `npm audit` against the committed dependency set. Use after `npm install` and before dependency upgrades. The app pins Vite to 6.4.2 because older 5.x versions are reported by npm audit for dev-server vulnerabilities.
+Runs `npm audit` against the committed dependency set. Use after `npm install` and before dependency upgrades. The app pins Vite to 6.4.2, React Router to 6.30.3, and ESLint to 9.39.4 because older resolved versions are reported by npm audit for dev-server, router, or plugin-kit vulnerabilities.
 
 ## Rust/Cargo version for Tauri
 The repository includes `rust-toolchain.toml` and expects Rust/Cargo 1.88.0 for Tauri development. This avoids the Cargo 1.84 `edition2024` dependency parsing error that can happen when crates such as `time` are resolved by Tauri dependencies.
