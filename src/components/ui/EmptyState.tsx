@@ -1,0 +1,2 @@
+import type React from 'react';
+export function EmptyState({ title='Nothing here yet', description, action }: { title?:string; description?:string; action?: React.ReactNode }) { return <div className="rounded-xl border border-dashed border-slate-300 p-6 text-center text-slate-500 dark:border-slate-700"><p className="font-medium text-slate-700 dark:text-slate-200">{title}</p>{description && <p className="mt-1 text-sm">{description}</p>}{action && <div className="mt-3">{action}</div>}</div>; }

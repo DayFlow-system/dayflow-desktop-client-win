@@ -1,0 +1,10 @@
+export const taskStatuses = ['planned','in_progress','done','skipped','archived'] as const;
+export const taskTypes = ['task','study','health','routine','fun','admin'] as const;
+export const energyLevels = ['low','medium','high'] as const;
+export const healthRules = ['always','skip_if_sick','only_if_healthy'] as const;
+export type TaskStatus = (typeof taskStatuses)[number];
+export type TaskType = (typeof taskTypes)[number];
+export type EnergyLevel = (typeof energyLevels)[number];
+export type HealthRule = (typeof healthRules)[number];
+export type Task = { id:string; title:string; description:string|null; status:TaskStatus; type:TaskType; priority:1|2|3|4|5; deadline:string|null; plannedDate:string|null; lastDoneAt:string|null; energyRequired:EnergyLevel; healthRule:HealthRule; createdAt:string; updatedAt:string };
+export type TaskInput = Partial<Omit<Task,'id'|'createdAt'|'updatedAt'|'lastDoneAt'>> & Pick<Task,'title'>;
