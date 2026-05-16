@@ -39,4 +39,4 @@
 - Add toast notifications for mutation success/failure.
 - Replace simple fetch mocks with MSW handlers as API scenarios grow.
 - Add local notifications for mandatory events.
-- Add true dark-mode class synchronization with the theme preference.
+- Continue expanding translation coverage when new user-facing strings are added.

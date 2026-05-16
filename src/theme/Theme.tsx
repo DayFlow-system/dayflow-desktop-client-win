@@ -14,6 +14,7 @@ export function Theme({ children }: PropsWithChildren) {
     const applyTheme = () => {
       const shouldUseDarkTheme = theme === 'dark' || (theme === 'system' && resolveSystemDarkMode());
       document.documentElement.classList.toggle('dark', shouldUseDarkTheme);
+      document.documentElement.classList.toggle('light', !shouldUseDarkTheme);
       document.documentElement.dataset.theme = shouldUseDarkTheme ? 'dark' : 'light';
     };
 

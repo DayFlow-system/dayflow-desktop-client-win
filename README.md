@@ -74,7 +74,7 @@ The repository does not commit binary `.ico` files. The `pretauri:dev` and `pret
 
 ## Language and theme
 
-Open Settings to switch the UI language between English, Russian, and Slovak. Settings also controls the light/dark/system theme; `src/theme/Theme.tsx` applies the `dark` class and document language automatically.
+Open Settings to switch the UI language between English, Russian, and Slovak. Core pages, forms, cards, empty/loading/error states, enums, and action buttons use `src/i18n/translations.ts`. Settings also controls the light/dark/system theme; `src/theme/Theme.tsx` now applies explicit `light`/`dark` classes and `tailwind.config.js` uses class-based dark mode so the light option overrides a dark OS theme.
 
 Task dates are optional. Leaving Deadline or Planned date empty sends `null` to the API instead of blocking task creation.
 
