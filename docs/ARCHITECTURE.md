@@ -17,4 +17,4 @@ DayFlow Desktop follows a strict HTTP-only architecture: Tauri/React UI talks to
 
 ## Internationalization and theme
 
-`src/i18n/translations.ts` contains English, Russian, and Slovak labels plus the `useI18n` helper. `src/theme/Theme.tsx` applies light/dark/system theme behavior and updates `document.documentElement.lang`.
+`src/i18n/translations.ts` contains English, Russian, and Slovak labels plus the `useI18n` helper. Pages, forms, domain cards, and common UI states should call `t()`/`enumLabel()` instead of hard-coding user-visible labels. `src/theme/Theme.tsx` applies explicit `light`/`dark` classes, honors the system preference when selected, and updates `document.documentElement.lang`; Tailwind is configured with `darkMode: 'class'` so Settings fully controls dark-mode utilities.
